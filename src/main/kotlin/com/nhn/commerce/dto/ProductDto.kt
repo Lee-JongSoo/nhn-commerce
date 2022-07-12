@@ -4,7 +4,6 @@ import com.nhn.commerce.model.Product
 import java.time.LocalDateTime
 
 data class GetProductDto (
-    val productId: Long? = null,
     val productName: String,
     val salePrice: Int,
     val registerYmdt: LocalDateTime,

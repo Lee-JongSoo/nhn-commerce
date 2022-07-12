@@ -2,7 +2,6 @@ package com.nhn.commerce.model
 
 import com.nhn.commerce.dto.GetProductDto
 import com.nhn.commerce.dto.ProductDto
-import com.nhn.commerce.dto.getProductDto
 import java.time.LocalDateTime
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -22,7 +21,6 @@ class Product(
 ){
     fun toReadProductDto(): GetProductDto {
         return GetProductDto(
-            productId = productId,
             productName = productName,
             registerYmdt = registerYmdt,
             salePrice = salePrice,
@@ -35,5 +33,11 @@ class Product(
             productName = productName,
             salePrice = salePrice
         )
+    }
+
+    fun updateProduct(productDto: ProductDto) {
+        productName = productDto.productName
+        salePrice = productDto.salePrice
+        updateYmdt = LocalDateTime.now()
     }
 }
