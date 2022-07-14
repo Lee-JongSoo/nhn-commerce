@@ -15,18 +15,10 @@ class ProductService {
     @Autowired
     private lateinit var productRepository: ProductRepository
 
-    fun getProducts(): List<GetProductDto> {
-        val product = productRepository.findAllBy()
-        return product.stream().map {
-            it.toReadProductDto()
-        }.collect(Collectors.toList())
-    }
+    fun findProductList(): List<Product> = productRepository.findAllBy()
 
-    fun getProductOne(productId: Long): List<GetProductDto> {
-        val product = productRepository.findById(productId)
-        return product.stream().map {
-            it.toReadProductDto()
-        }.collect(Collectors.toList())
+    fun getProductOne(productId: Long): Product {
+        return productRepository.findById(productId).get()
     }
 
     @Transactional

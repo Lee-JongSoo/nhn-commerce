@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Detail!</title>
+</head>
+<body>
+
+<h1>상품 세부 조회</h1>
+    <table border="1">
+        <th>상품 번호</th>
+        <th>상품 이름</th>
+        <th>상품 가격</th>
+        <th>등록 날짜</th>
+        <th>수정 날짜</th>
+        <th>상품 수정</th>
+        <th>상품 삭제</th>
+        <tr>
+            <td><input type="text" class="form-control" th:field="${productDetail.productId}" readonly></td>
+            <td><input type="text" class="form-control"  th:field="${productDetail.productName}"></td>
+            <td><input type="number" class="form-control" th:field="${productDetail.salePrice}"></td>
+            <td th:text="${productDetail.registerYmdt}"></td>
+            <td th:text="${productDetail.updateYmdt}"></td>
+            <td>
+                <a href="#" th:href="@{/product/update/{id} (id=${productDetail.productId})}" class="btn btn-primary" role="button">수정</a>
+            </td>
+            <td><a th:href="@{/delete/{id} (id=${productDetail.productId})}" class="btn btn-danger">
+                <i class="fas fa-user-times ml-2">삭제</i>
+            </a></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

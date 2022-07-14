@@ -12,12 +12,11 @@ import javax.persistence.Id
 class Product(
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private val productId: Long? = null,
-
-    private var productName: String,
-    private var registerYmdt: LocalDateTime = LocalDateTime.now(),
-    private var salePrice: Int,
-    private var updateYmdt: LocalDateTime? = null,
+    val productId: Long? = null,
+    var productName: String,
+    var registerYmdt: LocalDateTime = LocalDateTime.now(),
+    var salePrice: Int,
+    var updateYmdt: LocalDateTime? = null,
 ){
     fun toReadProductDto(): GetProductDto {
         return GetProductDto(
