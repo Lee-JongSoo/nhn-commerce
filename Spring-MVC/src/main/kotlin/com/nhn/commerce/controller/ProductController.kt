@@ -3,6 +3,7 @@ package com.nhn.commerce.controller
 import com.nhn.commerce.dto.ProductDto
 import com.nhn.commerce.model.Product
 import com.nhn.commerce.service.ProductService
+import com.sun.org.slf4j.internal.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
@@ -14,9 +15,16 @@ class ProductController(
 
     @Autowired
     private val productService: ProductService,
+
 ) {
+
+    private val log = LoggerFactory.getLogger(javaClass)
+
     @GetMapping("/product")
     fun getProductList(model: Model): String {
+
+        log.error("LogNCrash Error Test-leejs")
+
         model.addAttribute("productList", productService.findProductList())
         model.addAttribute("product", Product(0,"", LocalDateTime.now(),0,null))
         return "product"
